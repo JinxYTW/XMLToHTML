@@ -1,0 +1,76 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+#content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Bookstore section */
+.bookstore {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Book article */
+.book {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.book[data-category="cooking"] {
+    border-left: 5px solid #ff6347;
+}
+
+.book[data-category="children"] {
+    border-left: 5px solid #ffa500;
+}
+
+.book[data-category="web"] {
+    border-left: 5px solid #4682b4;
+}
+
+/* Book details */
+.title {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.author, .year, .price {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Cover attribute */
+.book[data-cover="paperback"] {
+    background-color: #f0f8ff;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .book {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.2em;
+    }
+
+    .author, .year, .price {
+        font-size: 0.9em;
+    }
+}

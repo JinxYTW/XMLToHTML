@@ -1,4 +1,3 @@
-
 var xhttp = new XMLHttpRequest(); // Créer un objet XMLHttpRequest
 xhttp.onreadystatechange = function() { // Quand l'état de la requête change
     if (this.readyState == 4 && this.status == 200) { // Si la requête est terminée et que le statut est 200
