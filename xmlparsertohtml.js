@@ -23,57 +23,46 @@ function xmlparserToHtml(xml) {
     return html;
 
 }
+// Mappage des noms de nœuds XML aux balises d'ouverture HTML
+const openTagMap = {
+    bookstore: `<section class="bookstore">`,
+    book: (node) => `<article class="book" data-category="${node.getAttribute('category')}" ${node.hasAttribute('cover') ? `data-cover="${node.getAttribute('cover')}"` : ''}>`,
+    title: (node) => `<h2 class="title" lang="${node.getAttribute('lang')}">`,
+    author: `<p class="author">`,
+    year: `<p class="year">`,
+    price: `<p class="price">`
+};
+
+// Mappage des noms de nœuds XML aux balises de fermeture HTML
+const closingTagMap = {
+    bookstore: `</section>`,
+    book: `</article>`,
+    title: `</h2>`,
+    author: `</p>`,
+    year: `</p>`,
+    price: `</p>`
+};
 
 function nodeToHtml(node) {
     let html = ''; // L'attribut qui contiendra le code html
 
     if (node.nodeType == 1) { // Si le noeud est un élément
-        // Choisir la balise HTML en fonction du nodeName
-        switch (node.nodeName.toLowerCase()) {
-            case 'bookstore':
-                html += `<section class="bookstore">`;
-                break;
-            case 'book':
-                html += `<article class="book" data-category="${node.getAttribute('category')}" ${node.hasAttribute('cover') ? `data-cover="${node.getAttribute('cover')}"` : ''}>`;
-                break;
-            case 'title':
-                html += `<h2 class="title" lang="${node.getAttribute('lang')}">`;
-                break;
-            case 'author':
-            case 'year':
-            case 'price':
-                html += `<p class="${node.nodeName.toLowerCase()}">`;
-                break;
-            default:
-                html += `<div>`;
-        }
+        const nodeName = node.nodeName.toLowerCase();
+
+        // Utiliser openTagMap pour ouvrir la balise, avec gestion des fonctions pour les cas spéciaux
+        const openTag = typeof openTagMap[nodeName] === 'function' ? openTagMap[nodeName](node) : openTagMap[nodeName] || `<div>`;
+        html += openTag;
 
         for (let i = 0; i < node.childNodes.length; i++) {
             html += nodeToHtml(node.childNodes[i]); // Convertir le noeud en html
         }
 
-        // Fermer la balise HTML appropriée
-        switch (node.nodeName.toLowerCase()) {
-            case 'bookstore':
-                html += `</section>`;
-                break;
-            case 'book':
-                html += `</article>`;
-                break;
-            case 'title':
-                html += `</h2>`;
-                break;
-            case 'author':
-            case 'year':
-            case 'price':
-                html += `</p>`;
-                break;
-            default:
-                html += `</div>`;
-        }
+        // Utiliser closingTagMap pour fermer la balise
+        const closingTag = closingTagMap[nodeName] || `</div>`;
+        html += closingTag;
     } else if (node.nodeType == 3) { // Si le noeud est un texte
         html += node.nodeValue; // Ajouter le texte directement
     }
+
     return html;
 }
-
