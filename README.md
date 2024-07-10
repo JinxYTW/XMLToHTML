@@ -23,12 +23,12 @@ Je suis donc parvenu à coder cette version qui fonctionne dans pas mal de cas, 
  2. Bouton (si le nom de la balise XML est button)
  3. Input (si le nom de la balise XML est input)
  4. Select (si le nom de la balise XML est select)
- 5. Option ((si le nom de la balise XML est option)
+ 5. Option (si le nom de la balise XML est option)
  6. Gestion des Attributs
  7. Gestion du texte
 
 ## How to use
-On *xmlparsertohtml.js*, replace book.html in line 9.
+On *xmlparsertohtml.js*, replace mix.html in line 9.
  
 
 ```

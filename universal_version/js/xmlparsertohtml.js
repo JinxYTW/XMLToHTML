@@ -6,7 +6,7 @@ xhttp.onreadystatechange = function() { // Quand l'état de la requête change
         document.getElementById("content").innerHTML = html; // Afficher le html dans la balise avec l'id "content"
     }
 }
-xhttp.open("GET", "./xml/book.xml", true); // Ouvrir une requête GET pour le fichier book.xml
+xhttp.open("GET", "./xml/mix.xml", true); // Ouvrir une requête GET pour le fichier book.xml
 xhttp.send(); // Envoyer la requête
 
 function xmlparserToHtml(xml) {
