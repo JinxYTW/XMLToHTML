@@ -1,0 +1,7 @@
+<!-- buttons.xml -->
+<interface>
+    <button id="btn1" text="Click Me" action="alert('Button 1 clicked')" />
+    <button id="btn2" text="Submit" action="alert('Button 2 clicked')" />
+    <button id="btn3" text="Cancel" action="alert('Button 3 clicked')" />
+  </interface>
+  
